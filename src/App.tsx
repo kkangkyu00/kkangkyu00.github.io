@@ -1,4 +1,6 @@
 import React from 'react';
+import Test from 'components';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -8,7 +10,7 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <div>Hi, I'm KyuSeok</div>
-        <div>test</div>
+        <Test />
       </header>
     </div>
   );
