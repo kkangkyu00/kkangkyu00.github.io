@@ -16,15 +16,16 @@ module.exports = {
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['tsconfig.json'],
-    createDefaultProgram: true,
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    project: './tsconfig.json',
     ecmaFeatures: {
       jsx: true
-    }
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    createDefaultProgram: true,
+    tsconfigRootDir: __dirname
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint'],
   settings: {
     'import/resolver': {
       node: {
@@ -52,5 +53,6 @@ module.exports = {
         tsx: 'never'
       }
     ]
-  }
+  },
+  ignorePatterns: ['*.config.js']
 };
