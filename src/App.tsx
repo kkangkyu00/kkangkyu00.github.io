@@ -9,7 +9,7 @@ const App = () => {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <div>Hi, I'm KyuSeok</div>
+        <div>Hi, KyuSeok</div>
         <Test />
       </header>
     </div>
