@@ -1,17 +1,29 @@
 import React from 'react';
-import Test from 'components';
+import { Routes, Route, useLocation, Location } from 'react-router-dom';
+import { HomePage } from 'pages';
+import { HeaderContainer } from 'containers';
 
-import logo from './logo.svg';
 import './App.css';
 
-const App = () => {
+interface AppRouteProps {
+  location: Location;
+}
+
+// 추후 따로 분리
+const AppRoute = ({ location }: AppRouteProps) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div>Hi, KyuSeok</div>
-        <Test />
-      </header>
+    <Routes location={location}>
+      <Route path="/" element={<HomePage />} />
+    </Routes>
+  );
+};
+
+const App = () => {
+  const location = useLocation();
+  return (
+    <div>
+      <HeaderContainer />
+      <AppRoute location={location} />
     </div>
   );
 };
