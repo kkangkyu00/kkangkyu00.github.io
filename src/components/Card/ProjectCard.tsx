@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 const { Meta } = Card;
 
-// #999999
 const StyledCard = styled(Card)`
   width: 100%;
   margin-top: 16px;
@@ -19,19 +18,11 @@ const StyledCard = styled(Card)`
       margin: 0px;
       position: relative;
       z-index: 0;
-
-      .overlay {
-        z-index: 1;
-        position: absolute;
-        height: 100%;
-        display: flex;
-        //flex-direction: column;
-        //-webkit-box-pack: center;
-        //justify-content: center;
-        padding: 23px 4px;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-        //color: rgb(255, 255, 255);
-        //text-align: center;
+    }
+    .ant-card-cover:hover {
+      .overlay-hover {
+        opacity: 1;
+        transition: opacity 0.5s ease;
       }
     }
     .ant-card-body {
@@ -46,17 +37,12 @@ const StyledCard = styled(Card)`
 `;
 
 const Overlay = styled.div`
-  display: none;
-  &:hover {
+  && {
+    opacity: 0;
     z-index: 1;
     position: absolute;
     height: 100%;
-    //display: none !important;
-    display: flex;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding: 16px;
+    padding: 23px 4px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
   }
 `;
@@ -70,7 +56,7 @@ const ProjectCard = ({ title = 'asd' }: ProjectCardProps) => {
     <StyledCard
       cover={
         <>
-          <div className="overlay">ProjectName</div>
+          <Overlay className="overlay-hover">ProjectName</Overlay>
           <div>cover # image</div>
         </>
       }
