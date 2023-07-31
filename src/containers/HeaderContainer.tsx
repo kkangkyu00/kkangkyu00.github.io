@@ -5,10 +5,11 @@ const HeaderWrapper = styled.div`
   width: 100%;
   height: 64px;
 
-  position: sticky;
+  position: absolute;
   top: 0;
   z-index: 10;
-  background: #1c1c1c;
+  //background: #1c1c1c;
+  background: transparent;
 
   font-size: 18px;
   font-weight: 500;
