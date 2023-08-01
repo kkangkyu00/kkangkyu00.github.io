@@ -1,28 +1,40 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { Card, CardProps } from 'antd';
-import styled from 'styled-components';
+import { Card, CardProps, Col } from 'antd';
+import styled, { css } from 'styled-components';
+
+import Image from 'components/Image';
 
 const { Meta } = Card;
 
-const StyledCard = styled(Card)`
+type TDirection = 'row';
+interface StyledCardProps {
+  direction?: TDirection;
+}
+const FlexCss = css`
+  display: flex;
+  flex-direction: row;
+`;
+
+const StyledCard = styled(Card)<StyledCardProps>`
   width: 100%;
   margin-top: 16px;
   max-width: 354px;
   border: none;
+  ${({ direction }) => direction && FlexCss};
   & {
     .ant-card-cover {
+      width: ${({ direction }) => direction && '74px'};
       min-height: 64px;
       aspect-ratio: auto 1 / 1;
       overflow: hidden;
+      display: flex;
       margin: 0px;
       position: relative;
       z-index: 0;
-    }
-    .ant-card-cover:hover {
-      .overlay-hover {
-        opacity: 1;
-        transition: opacity 0.5s ease;
+      svg {
+        object-fit: contain;
+        aspect-ratio: auto 1 / 1;
       }
     }
     .ant-card-body {
@@ -45,19 +57,26 @@ const Overlay = styled.div`
     padding: 23px 4px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
   }
+  &&:hover {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
 `;
 
 interface ProjectCardProps extends CardProps {
   title?: string;
+  image?: string;
+  direction?: TDirection;
 }
 
-const ProjectCard = ({ title = 'asd' }: ProjectCardProps) => {
+const ProjectCard = ({ title, direction, image, hoverable }: ProjectCardProps) => {
   return (
     <StyledCard
+      direction={direction}
       cover={
         <>
-          <Overlay className="overlay-hover">ProjectName</Overlay>
-          <div>cover # image</div>
+          {hoverable ? <Overlay>ProjectName</Overlay> : null}
+          <Image className="card-img" src={image} />
         </>
       }
     >

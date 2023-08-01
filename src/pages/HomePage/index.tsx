@@ -17,13 +17,75 @@ const Bulb = styled.div`
 
 const PageWrapper = styled.div`
   height: 100%;
-
-  background: linear-gradient(#1c1c1c, #282c34);
   color: #fff;
   .title {
     font-size: 5vw;
     text-transform: uppercase;
     letter-spacing: 1.5px;
+  }
+
+  .bulb {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #444;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  .bulb::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 22.5px;
+    width: 35px;
+    height: 80px;
+    background: #444;
+    border-top: 30px solid #000;
+    border-radius: 10px;
+  }
+
+  body.on .bulb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background: #fff;
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+
+  .bulb span:nth-child(1) {
+    position: absolute;
+    top: -16px;
+    left: -4px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    transform: rotate(342deg);
+    border-bottom-right-radius: 40px;
+    box-shadow: 20px 20px 0 10px #444;
+  }
+
+  body.on .bulb span:nth-child(1) {
+    box-shadow: 20px 20px 0 10px #fff;
+  }
+
+  .bulb span:nth-child(2) {
+    position: absolute;
+    top: -16px;
+    right: -4px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    transform: rotate(17deg);
+    border-bottom-left-radius: 40px;
+    box-shadow: -20px 20px 0 10px #444;
   }
 `;
 
@@ -58,6 +120,13 @@ const HomePage = () => {
       <div style={{ height: 500 }}>
         {/* <div className="title">Hi I&apos;m KyuSeok</div> */}
         <div>FRONT-END DEVELOPER.</div>
+        <div className="light">
+          <div className="wire" />
+          <div className="bulb">
+            <span />
+            <span />
+          </div>
+        </div>
       </div>
       <CardGroup>
         <div>Projects__</div>
@@ -66,7 +135,7 @@ const HomePage = () => {
             {[0, 1, 2, 3, 4, 5].map((index) => (
               <Col span={8}>
                 <motion.div key={index} variants={item}>
-                  <ProjectCard />
+                  <ProjectCard hoverable />
                 </motion.div>
               </Col>
             ))}
@@ -76,11 +145,6 @@ const HomePage = () => {
       <div>
         <div>Professional</div>
         <div>Experience</div>
-      </div>
-      <div>
-        <div>Skills</div>
-        <div>React, JavaScript, Typescript, HTML/CSS</div>
-        <div>React-Query... 등등</div>
       </div>
     </PageWrapper>
   );

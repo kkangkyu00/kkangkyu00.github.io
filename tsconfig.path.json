@@ -7,7 +7,11 @@
       "containers": ["./containers"],
       "containers/*": ["./containers/*"],
       "pages": ["./pages"],
-      "pages/*": ["./pages/*"]
+      "pages/*": ["./pages/*"],
+      "routes": ["./routes"],
+      "routes/*": ["./routes/*"],
+      "images": ["./assets/images"],
+      "images/*": ["./assets/images/*"]
     }
   }
 }
