@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from 'react';
+import React, { ReactNode } from 'react';
+import { IconType } from 'react-icons';
 import { Card, CardProps, Col } from 'antd';
 import styled, { css } from 'styled-components';
 
@@ -18,27 +19,35 @@ const FlexCss = css`
 
 const StyledCard = styled(Card)<StyledCardProps>`
   width: 100%;
-  margin-top: 16px;
+  //height: 64px;
+  //margin-top: 16px;
   max-width: 354px;
   border: none;
   ${({ direction }) => direction && FlexCss};
   & {
     .ant-card-cover {
-      width: ${({ direction }) => direction && '74px'};
-      min-height: 64px;
+      width: ${({ direction }) => direction && '64px'};
+      max-height: ${({ direction }) => direction && '64px'};
+      min-height: 46px;
       aspect-ratio: auto 1 / 1;
       overflow: hidden;
       display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 0px;
       position: relative;
       z-index: 0;
-      svg {
+      svg:not(card-img) {
+        width: 40px;
+        height: 40px;
+        color: #535353;
         object-fit: contain;
         aspect-ratio: auto 1 / 1;
       }
     }
     .ant-card-body {
-      padding: 16px 0;
+      padding: 0;
+      margin: auto 0;
       .ant-card-meta {
         .ant-card-meta-title {
           margin: 0;
@@ -65,22 +74,24 @@ const Overlay = styled.div`
 
 interface ProjectCardProps extends CardProps {
   title?: string;
-  image?: string;
+  image?: string | ReactNode;
+  description?: string;
+  hover?: boolean;
   direction?: TDirection;
 }
 
-const ProjectCard = ({ title, direction, image, hoverable }: ProjectCardProps) => {
+const ProjectCard = ({ title, direction, image, hover, description }: ProjectCardProps) => {
   return (
     <StyledCard
       direction={direction}
       cover={
         <>
-          {hoverable ? <Overlay>ProjectName</Overlay> : null}
-          <Image className="card-img" src={image} />
+          {hover ? <Overlay>ProjectName</Overlay> : null}
+          {typeof image === 'string' ? <Image className="card-img" src={image} /> : image}
         </>
       }
     >
-      {title ? <Meta title={title} description="description" /> : null}
+      {title ? <Meta title={title} description={description} /> : null}
     </StyledCard>
   );
 };
