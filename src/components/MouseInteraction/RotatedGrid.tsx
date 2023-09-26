@@ -23,7 +23,7 @@ const RotatedGrid = () => {
 
     const numRows = 8;
     const numCols = 16;
-    const movePos = { x: e.pageX - canvas.offsetLeft * 2, y: e.pageY + canvas.offsetTop };
+    const movePos = { x: e.pageX + canvas.offsetLeft, y: e.pageY + canvas.offsetTop };
 
     for (let row = 0; row < numRows; row += 1) {
       for (let col = 0; col < numCols; col += 1) {
