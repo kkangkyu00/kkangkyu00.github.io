@@ -47,6 +47,7 @@ const skills = [
 ];
 
 const AboutPage = () => {
+  console.log('################ AboutPage');
   // Passionate about UI/UX. Over 4 years of development experience in HTML, CSS, JS, React and NextJS frameworks.
   return (
     <div>
