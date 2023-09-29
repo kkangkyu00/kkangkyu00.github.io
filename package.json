@@ -1,7 +1,7 @@
 {
   "homepage": "https://kkangkyu00.github.io",
   "name": "kkangkyu00.github.io",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@craco/craco": "^7.1.0",
