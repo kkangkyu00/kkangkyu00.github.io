@@ -1,14 +1,21 @@
 import { css } from 'styled-components';
 // import { pixelToRem, pixelToEm, pixelToVw, toSpacing } from 'utils';
 
-export const color = {};
+export const color = {
+  white: '#FFFFFF',
+  gray: '#AFB3B8',
+  black: '#212529',
+  disable: '#EBEBEC',
+  bgGray: '#F8F8F8',
+  bgOverlay: '#06121A',
+  bgDNB: '#11202C',
+  //
+  bgRB: '#243441',
+  A4: '#94A0A3',
+  A5: '#C4C8C7'
+};
 
 export const typography = {
-  title48B: css`
-    font-size: 48px;
-    line-height: 72px;
-    font-weight: bold;
-  `,
   title32B: css`
     font-size: 32px;
     line-height: 52px;
@@ -52,17 +59,13 @@ export const typography = {
 };
 
 export const lightTheme = {
-  MAIN: '#6868AD',
-  SUB: '#dbd7ff',
-  BACKGROUND: '#eff1f5',
-  SUBBACKGROUND: 'rgb(242, 240, 253)'
+  bgOverlay: '#EFF1F5',
+  color: '#202124'
 };
 
 export const darkTheme = {
-  MAIN: '#dbd7ff',
-  SUB: '#6868AD',
-  BACKGROUND: '#202124',
-  SUBBACKGROUND: '#30373e'
+  bgOverlay: '#202124',
+  color: '#EFF1F5'
 };
 
 export const spacing = {

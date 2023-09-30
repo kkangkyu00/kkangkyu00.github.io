@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { ProjectCard } from 'components';
-import { useIntersectionObserver } from 'hooks';
+import { useIntersectionObserver, useTheme } from 'hooks';
 
 import { FullWidthBox } from 'styles';
 
@@ -12,7 +12,7 @@ import { FullWidthBox } from 'styles';
 
 const PageWrapper = styled.div`
   height: 100%;
-  color: #fff;
+  //color: #fff;
   .title {
     font-size: 5vw;
     text-transform: uppercase;
@@ -88,17 +88,19 @@ const Lamp = styled.div`
   }
 `;
 
-const BannerWrapper = styled.div`
+const BannerWrapper = styled.div<{ theme: any }>`
   width: 100%;
   //max-width: 70vw;
   //margin: 0 auto;
   height: 100vh;
-  background: linear-gradient(#181a21, #363a59);
+  //background: linear-gradient(#181a21, #363a59);
+  // background: ${({ theme }) => theme.bgOverlay};
 `;
 
 const projects = [{}, {}, {}, {}, {}, {}];
 
 const HomePage = () => {
+  const { theme } = useTheme();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(cardRef, { freezeOnceVisible: true });
 
@@ -129,9 +131,10 @@ const HomePage = () => {
   //   </div>
   //   <div className="light" />
   // </Lamp>
-
+  console.log(theme, '###################');
   return (
     <PageWrapper>
+      asdasdasdasd
       <BannerWrapper>
         <div>WELCOME</div>
         <div>Portfolio_ | FRONT-END DEVELOPER.</div>

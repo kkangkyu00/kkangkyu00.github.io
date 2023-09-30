@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, MenuProps } from 'antd';
+import { Menu, MenuProps, Button } from 'antd';
 import styled from 'styled-components';
 import { RiComputerLine, RiCupLine, RiCodeSSlashLine } from 'react-icons/ri';
 // import { BiCoffee } from 'react-icons/bi';
+
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -45,7 +47,7 @@ const HeaderWrapper = styled.div`
 
 const StyledMenu = styled(Menu)`
   width: 100%;
-  color: #f6f7f8;
+  //color: #f6f7f8;
   //justify-content: end;
   background: transparent;
   border: none;
@@ -74,6 +76,8 @@ const items: MenuProps['items'] = [
 ];
 
 const HeaderContainer = () => {
+  const { theme, onChangeTheme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
   const onClick: MenuProps['onClick'] = ({ key }) => {
     navigate(key);
@@ -82,6 +86,7 @@ const HeaderContainer = () => {
   return (
     <HeaderWrapper>
       <div className="menu">
+        <Button onClick={onChangeTheme}>{theme}</Button>
         <Logo />
         <StyledMenu onClick={onClick} mode="horizontal" items={items} />
       </div>
