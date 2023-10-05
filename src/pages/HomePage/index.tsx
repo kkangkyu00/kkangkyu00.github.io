@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { ProjectCard } from 'components';
-import { useIntersectionObserver, useTheme } from 'hooks';
+import { useIntersectionObserver } from 'hooks';
 
 import { FullWidthBox } from 'styles';
 
@@ -36,7 +36,6 @@ const BannerWrapper = styled.div<{ theme: any }>`
 const projects = [{}, {}, {}, {}, {}, {}];
 
 const HomePage = () => {
-  const { theme } = useTheme();
   const cardRef = useRef<HTMLDivElement | null>(null);
   const entry = useIntersectionObserver(cardRef, { freezeOnceVisible: true });
 

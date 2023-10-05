@@ -35,13 +35,13 @@ const HeaderWrapper = styled.div`
   font-weight: 500;
   color: #f6f7f8;
   & .menu {
-    width: 60vw;
-    height: 100%;
-    margin: auto;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    //width: 60vw;
+    //height: 100%;
+    //margin: auto;
+    //border: none;
+    //display: flex;
+    //align-items: center;
+    //justify-content: space-between;
   }
 `;
 

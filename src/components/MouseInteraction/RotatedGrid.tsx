@@ -12,7 +12,7 @@ const RotatedGrid = () => {
     return Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
   };
 
-  const generateGrid = (e: any) => {
+  const generateGrid = (e: MouseEvent) => {
     if (!canvasRef || !canvasRef.current) return;
     const canvas: HTMLCanvasElement = canvasRef.current!;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
@@ -23,18 +23,19 @@ const RotatedGrid = () => {
 
     const numRows = 8;
     const numCols = 16;
-    const movePos = { x: e.pageX + canvas.offsetLeft, y: e.pageY + canvas.offsetTop };
+    const movePos = { x: (e.pageX - canvas.offsetLeft) * 2, y: (e.pageY - canvas.offsetTop) * 2 };
 
     for (let row = 0; row < numRows; row += 1) {
       for (let col = 0; col < numCols; col += 1) {
         const x = normalize(col, 0, numCols, 0, canvas.width) + 25;
         const y = normalize(row, 0, numRows, 0, canvas.height) + 25;
 
+        // 두 점 사이의 거리 공식
         const dx = Math.abs(x + col - movePos.x);
         const dy = Math.abs(y + row - movePos.y);
         const distance = Math.sqrt(dx ** 2 + dy ** 2);
 
-        let radius = normalize(distance, 0, 100, 30, 20);
+        let radius = normalize(distance, 0, 100, 40, 30);
         radius = clamp(radius, 0, canvas.width);
 
         const midPoint = { x, y: y + radius * 0.5 };
@@ -62,10 +63,10 @@ const RotatedGrid = () => {
   };
 
   useEffect(() => {
-    // generateGrid({ pageX: 0, pageY: 0 });
-    window.addEventListener('mousemove', generateGrid);
+    // requestAnimationFrame
+    window.addEventListener('mousemove', generateGrid, false);
     return () => {
-      window.addEventListener('mousemove', generateGrid);
+      window.addEventListener('mousemove', generateGrid, false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
