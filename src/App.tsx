@@ -8,9 +8,11 @@ import './App.css';
 const App = () => {
   const location = useLocation();
   return (
-    <div>
-      <HeaderContainer />
-      <AppRoutes location={location} />
+    <div className="App">
+      <React.Suspense fallback="">
+        <HeaderContainer />
+        <AppRoutes location={location} />
+      </React.Suspense>
     </div>
   );
 };

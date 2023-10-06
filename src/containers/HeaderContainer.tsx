@@ -31,9 +31,10 @@ const HeaderWrapper = styled.div`
   width: 100%;
   height: 64px;
   z-index: 10;
-  font-size: 18px;
-  font-weight: 500;
-  color: #f6f7f8;
+  ${({ theme }) => theme.typography.title18R};
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   & .menu {
     //width: 60vw;
     //height: 100%;
@@ -47,8 +48,6 @@ const HeaderWrapper = styled.div`
 
 const StyledMenu = styled(Menu)`
   width: 100%;
-  //color: #f6f7f8;
-  //justify-content: end;
   background: transparent;
   border: none;
   padding: 0 16px;
@@ -56,9 +55,6 @@ const StyledMenu = styled(Menu)`
     .ant-menu-item:after {
       display: none;
     }
-    //.ant-menu-item:hover ~ .ant-menu-item:not(.antd-menu-item-active) {
-    //  color: rgba(255, 255, 255, 0.3);
-    //}
     .ant-menu-item:not(.ant-menu-item-selected):not(.ant-menu-selected):hover {
       color: #f6f7f8;
     }
@@ -86,9 +82,9 @@ const HeaderContainer = () => {
   return (
     <HeaderWrapper>
       <div className="menu">
-        <Button onClick={onChangeTheme}>{theme}</Button>
         <Logo />
         <StyledMenu onClick={onClick} mode="horizontal" items={items} />
+        <Button onClick={onChangeTheme}>{theme}</Button>
       </div>
     </HeaderWrapper>
   );

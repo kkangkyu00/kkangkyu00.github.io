@@ -8,9 +8,7 @@ const RotatedGrid = () => {
     return (newScaleMax - newScaleMin) * scale + newScaleMin;
   };
 
-  const clamp = (num: number, a: number, b: number) => {
-    return Math.max(Math.min(num, Math.max(a, b)), Math.min(a, b));
-  };
+  const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
   const generateGrid = (e: MouseEvent) => {
     if (!canvasRef || !canvasRef.current) return;
@@ -35,7 +33,7 @@ const RotatedGrid = () => {
         const dy = Math.abs(y + row - movePos.y);
         const distance = Math.sqrt(dx ** 2 + dy ** 2);
 
-        let radius = normalize(distance, 0, 100, 40, 30);
+        let radius = normalize(distance, 0, 100, 50, 40);
         radius = clamp(radius, 0, canvas.width);
 
         const midPoint = { x, y: y + radius * 0.5 };

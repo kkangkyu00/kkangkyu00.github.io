@@ -7,7 +7,7 @@ export const color = {
   black: '#212529',
   disable: '#EBEBEC',
   bgGray: '#F8F8F8',
-  bgOverlay: '#06121A',
+  // bgOverlay: '#06121A',
   bgDNB: '#11202C',
   //
   bgRB: '#243441',
@@ -58,21 +58,27 @@ export const typography = {
   `
 };
 
-export const lightTheme = {
-  bgOverlay: '#EFF1F5',
-  color: '#202124'
-};
-
-export const darkTheme = {
-  bgOverlay: '#202124',
-  color: '#EFF1F5'
-};
-
 export const spacing = {
   default: '8px',
   half: '4px',
   double: '16px',
   triple: '24px'
+};
+
+export const lightTheme = {
+  // color,
+  typography,
+  spacing,
+  bgOverlay: '#EFF1F5',
+  color: '#202124'
+};
+
+export const darkTheme = {
+  // ...color,
+  typography,
+  spacing,
+  bgOverlay: '#202124',
+  color: '#EFF1F5'
 };
 
 export default { color, typography, spacing, lightTheme, darkTheme };
