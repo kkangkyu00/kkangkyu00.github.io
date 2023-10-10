@@ -30,7 +30,7 @@ const BannerWrapper = styled.div<{ theme: any }>`
   //margin: 0 auto;
   height: 100vh;
   //background: linear-gradient(#181a21, #363a59);
-  // background: ${({ theme }) => theme.bgOverlay};
+  // background: ${({ theme }) => theme.defaultOverlay};
 `;
 
 const projects = [{}, {}, {}, {}, {}, {}];

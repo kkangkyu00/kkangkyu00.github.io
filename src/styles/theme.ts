@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-// import { pixelToRem, pixelToEm, pixelToVw, toSpacing } from 'utils';
 
 export const color = {
   white: '#FFFFFF',
@@ -7,7 +6,7 @@ export const color = {
   black: '#212529',
   disable: '#EBEBEC',
   bgGray: '#F8F8F8',
-  // bgOverlay: '#06121A',
+  bgOverlay: '#06121A',
   bgDNB: '#11202C',
   //
   bgRB: '#243441',
@@ -58,27 +57,18 @@ export const typography = {
   `
 };
 
-export const spacing = {
-  default: '8px',
-  half: '4px',
-  double: '16px',
-  triple: '24px'
-};
-
 export const lightTheme = {
-  // color,
+  color,
   typography,
-  spacing,
-  bgOverlay: '#EFF1F5',
-  color: '#202124'
+  defaultOverlay: '#EFF1F5',
+  defaultColor: '#202124'
 };
 
 export const darkTheme = {
-  // ...color,
+  color,
   typography,
-  spacing,
-  bgOverlay: '#202124',
-  color: '#EFF1F5'
+  defaultOverlay: '#202124',
+  defaultColor: '#EFF1F5'
 };
 
-export default { color, typography, spacing, lightTheme, darkTheme };
+export default { color, typography, lightTheme, darkTheme };
