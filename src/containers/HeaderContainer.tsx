@@ -33,7 +33,6 @@ const HeaderWrapper = styled.div`
     align-items: center;
   }
 `;
-
 const MenuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -50,6 +49,7 @@ const StyledMenu = styled(Menu)`
     .ant-menu-item:after {
       display: none;
     }
+    .ant-menu-item-active,
     .ant-menu-item-selected {
       color: ${({ theme }) => theme.defaultColor} !important;
     }
