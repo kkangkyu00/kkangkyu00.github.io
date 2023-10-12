@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, MenuProps, Button } from 'antd';
+import { Menu, MenuProps } from 'antd';
 import styled from 'styled-components';
 
-import { ThemeContext } from '../contexts/ThemeContext';
+import { DarkModeButton } from 'components';
 
 const LogoWrapper = styled.div`
   display: flex;
@@ -68,7 +68,6 @@ const items: MenuProps['items'] = [
 
 const HeaderContainer = () => {
   const navigate = useNavigate();
-  const { theme, onChangeTheme } = useContext(ThemeContext);
 
   const onClick: MenuProps['onClick'] = ({ key }) => {
     navigate(key);
@@ -79,7 +78,7 @@ const HeaderContainer = () => {
         <Logo />
         <MenuWrapper>
           <StyledMenu onClick={onClick} mode="horizontal" items={items} />
-          <Button onClick={onChangeTheme}>{theme}</Button>
+          <DarkModeButton />
         </MenuWrapper>
       </div>
     </HeaderWrapper>
