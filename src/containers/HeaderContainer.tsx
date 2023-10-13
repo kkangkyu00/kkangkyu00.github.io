@@ -31,6 +31,7 @@ const HeaderWrapper = styled.div`
     margin: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 `;
 const MenuWrapper = styled.div`
@@ -44,14 +45,17 @@ const StyledMenu = styled(Menu)`
   border: none;
   padding: 0 16px;
   background: transparent;
+  ${({ theme }) => theme.typography.body16R};
   color: ${({ theme }) => theme.defaultColor};
   & {
     .ant-menu-item:after {
       display: none;
     }
-    .ant-menu-item-active,
-    .ant-menu-item-selected {
+    .ant-menu-item-active {
       color: ${({ theme }) => theme.defaultColor} !important;
+    }
+    .ant-menu-item-selected {
+      color: inherit !important;
     }
     &:hover:not(.ant-menu-item-active) {
       color: ${({ theme }) => theme.color.gray} !important;

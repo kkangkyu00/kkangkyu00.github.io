@@ -1,8 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyleCss = css`
   body {
     background-color: ${({ theme }) => theme.defaultOverlay};
     color: ${({ theme }) => theme.defaultColor};
   }
 `;
+
+export default createGlobalStyle`${GlobalStyleCss}`;

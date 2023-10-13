@@ -54,6 +54,16 @@ export const typography = {
     font-size: 18px;
     line-height: 28px;
     font-weight: normal;
+  `,
+  body16B: css`
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: bold;
+  `,
+  body16R: css`
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: normal;
   `
 };
 
