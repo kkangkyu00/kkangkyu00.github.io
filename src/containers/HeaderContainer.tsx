@@ -35,19 +35,23 @@ const HeaderWrapper = styled.div`
   }
 `;
 const MenuWrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 
 const StyledMenu = styled(Menu)`
-  width: 100%;
   border: none;
   padding: 0 16px;
   background: transparent;
   ${({ theme }) => theme.typography.body16R};
   color: ${({ theme }) => theme.defaultColor};
   & {
+    .ant-menu-item {
+      width: 100px;
+      text-align: center;
+    }
     .ant-menu-item:after {
       display: none;
     }
@@ -67,7 +71,7 @@ const items: MenuProps['items'] = [
   { label: 'Home', key: '/' },
   { label: 'About', key: '/about' },
   { label: 'Projects', key: '/projects' },
-  { label: 'Contact', key: '/contact' }
+  { label: 'GitHub', key: 'asd' }
 ];
 
 const HeaderContainer = () => {

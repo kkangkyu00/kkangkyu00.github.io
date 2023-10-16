@@ -6,9 +6,11 @@ html, body, #root, .App {
   font-size: 16px;
   width: 100%;
   touch-action: auto;
-
-  /*background: linear-gradient(#1c1c1c, #282c34);*/
-  /*background-color: #32343a;*/
+  /*::-webkit-scrollbar-thumb {*/
+  /*  border-radius: 5px;*/
+  /*  background-color: red;*/
+  /*  border: 2px solid blue;*/
+  /*}*/
 }
 
 body {

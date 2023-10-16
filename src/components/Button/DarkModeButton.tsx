@@ -7,6 +7,7 @@ import { ThemeContext } from 'contexts/ThemeContext';
 const ButtonWrapper = styled.div`
   scale: 0.9;
   height: 24px;
+  margin: 0 16px;
 `;
 
 const DarkModeButton = () => {

@@ -53,7 +53,7 @@ const AboutPage = () => {
     <div>
       <CardGroup>
         <div>About__</div>
-        {/* <div>안녕하세요. 화면의 결과물로 말하는 프론트엔드 3년차 강규석입니다.</div> */}
+        {/* <div>안녕하세요. 화면의 결과물로 말하는 프론트엔드 개발자 강규석입니다.</div> */}
         <FlexBox>
           <Card>asdasd</Card>
           <Card>asdasd</Card>
