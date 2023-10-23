@@ -45,12 +45,12 @@ export const typography = {
     line-height: 32px;
     font-weight: normal;
   `,
-  title18B: css`
+  body18B: css`
     font-size: 18px;
     line-height: 28px;
     font-weight: bold;
   `,
-  title18R: css`
+  body18R: css`
     font-size: 18px;
     line-height: 28px;
     font-weight: normal;

@@ -17,19 +17,47 @@ import {
 
 import { ProjectCard } from 'components';
 
-const CardGroup = styled.div`
+const Wrapper = styled.div`
+  //.pentagon {
+  //  height: 160px;
+  //  background-color: #48d8a4;
+  //}
+  //.pentagon:after {
+  //  content: '';
+  //  width: 100%;
+  //  height: 160px;
+  //  position: absolute;
+  //  top: 160px;
+  //  background-color: #48d8a4;
+  //  -webkit-clip-path: polygon(100% 100%, 100% 0, 0 0);
+  //  clip-path: polygon(100% 100%, 100% 0, 0 0);
+  //}
+  .banner {
+    width: 100vw;
+    max-width: 60vw;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+  }
+  }
+  .banner-content {
+    position: absolute;
+    bottom: 0;
+    ${({ theme }) => theme.typography.title32B};
+  }
+  .sub-content {
+    ${({ theme }) => theme.typography.body18B};
+  }
+  .about {
+    ${({ theme }) => theme.typography.body18R};
+  }
+`;
+
+const Section = styled.div`
   width: 100vw;
-  max-width: 70vw;
+  max-width: 60vw;
   margin: 0 auto;
   padding-bottom: 16px;
-`;
-
-const FlexBox = styled.div`
-  display: flex;
-`;
-
-const Card = styled.div`
-  //
 `;
 
 const skills = [
@@ -50,20 +78,24 @@ const AboutPage = () => {
   console.log('############## AboutPage');
   // Passionate about UI/UX. Over 4 years of development experience in HTML, CSS, JS, React and NextJS frameworks.
   return (
-    <div>
-      <CardGroup>
-        <div>About__</div>
-        {/* <div>안녕하세요. 화면의 결과물로 말하는 프론트엔드 개발자 강규석입니다.</div> */}
-        <FlexBox>
-          <Card>asdasd</Card>
-          <Card>asdasd</Card>
-          <Card>asdasd</Card>
-          <Card>asdasd</Card>
-        </FlexBox>
-      </CardGroup>
-      <CardGroup>
+    <Wrapper>
+      <div className="pentagon" />
+      <div className="banner">
+        <div className="banner-content">
+          <div className="sub-content">결과물로 말하는 프론트엔드 개발자</div>
+          <div>강규석에 대해 알아보자!</div>
+        </div>
+      </div>
+      <Section>
+        <div className="about">
+          <div>About__</div>
+          <div>항상 좋은 UX/UI에 대해 고민하고 재사용성을 고려해서 개발하고 있습니다.</div>
+          <div>새로운 기술을 습득하고 문제의식과 해결을 통해 성장하고 있습니다.</div>
+        </div>
+      </Section>
+      <Section>
         <div>Skills__</div>
-        {/* <div>프로젝트를 진행하면서 사용해본 경험이 있는 기술스택입니다.</div> */}
+        <div>프로젝트를 진행하면서 사용해본 경험이 있는 기술스택입니다.</div>
         <Row gutter={[8, 16]}>
           {skills.map(({ title, icon, description }) => (
             <Col span={6}>
@@ -71,12 +103,8 @@ const AboutPage = () => {
             </Col>
           ))}
         </Row>
-      </CardGroup>
-      <CardGroup>
-        <div>Certificate__</div>
-        <div>정보처리기능사</div>
-      </CardGroup>
-    </div>
+      </Section>
+    </Wrapper>
   );
 };
 

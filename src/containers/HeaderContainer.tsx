@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
 import styled from 'styled-components';
+import { BsGithub } from 'react-icons/bs';
 
 import { DarkModeButton } from 'components';
 
@@ -20,7 +21,7 @@ const Logo = () => <LogoWrapper>kkangkyu00</LogoWrapper>;
 const HeaderWrapper = styled.div`
   width: 100%;
   height: 64px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
   ${({ theme }) => theme.typography.title18R};
@@ -70,8 +71,7 @@ const StyledMenu = styled(Menu)`
 const items: MenuProps['items'] = [
   { label: 'Home', key: '/' },
   { label: 'About', key: '/about' },
-  { label: 'Projects', key: '/projects' },
-  { label: 'GitHub', key: 'asd' }
+  { label: 'Projects', key: '/projects' }
 ];
 
 const HeaderContainer = () => {
@@ -87,6 +87,7 @@ const HeaderContainer = () => {
         <MenuWrapper>
           <StyledMenu onClick={onClick} mode="horizontal" items={items} />
           <DarkModeButton />
+          <BsGithub width={20} height={20} />
         </MenuWrapper>
       </div>
     </HeaderWrapper>

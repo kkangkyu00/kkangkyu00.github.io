@@ -9,7 +9,7 @@ import { useIntersectionObserver } from 'hooks';
 import { FullWidthBox } from 'styles';
 
 const PageWrapper = styled.div`
-  height: 100%;
+  height: 400px;
   //color: #fff;
   .title {
     font-size: 5vw;
@@ -29,7 +29,7 @@ const BannerWrapper = styled.div<{ theme: any }>`
   //max-width: 70vw;
   //margin: 0 auto;
   height: 100vh;
-  //background: linear-gradient(#181a21, #363a59);
+  background: linear-gradient(#181a21, #363a59);
   // background: ${({ theme }) => theme.defaultOverlay};
 `;
 
@@ -58,12 +58,15 @@ const HomePage = () => {
     }
   };
 
+  // const pageWidth = document.documentElement.scrollWidth;
+  // const pageHeight = document.documentElement.scrollHeight;
   return (
     <PageWrapper>
-      asdasdasdasd
       <BannerWrapper>
-        <div>WELCOME</div>
-        <div>Portfolio_ | FRONT-END DEVELOPER.</div>
+        <div>
+          <div>WELCOME</div>
+          <div>Portfolio_ | FRONT-END DEVELOPER.</div>
+        </div>
       </BannerWrapper>
       <div style={{ background: '#0e121b' }}>
         <MarginCenterBox ref={cardRef}>

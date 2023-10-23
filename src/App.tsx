@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { HeaderContainer } from 'containers';
 import AppRoutes from 'routes';
 
-import './App.css';
+import './App.less';
 
 const App = () => {
   const location = useLocation();
