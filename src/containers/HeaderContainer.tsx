@@ -40,6 +40,11 @@ const MenuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  .gitIcon {
+    width: 20px;
+    height: 20px;
+    margin: auto 16px;
+  }
 `;
 
 const StyledMenu = styled(Menu)`
@@ -87,7 +92,7 @@ const HeaderContainer = () => {
         <MenuWrapper>
           <StyledMenu onClick={onClick} mode="horizontal" items={items} />
           <DarkModeButton />
-          <BsGithub width={20} height={20} />
+          <BsGithub className="gitIcon" />
         </MenuWrapper>
       </div>
     </HeaderWrapper>

@@ -29,7 +29,7 @@ const BannerWrapper = styled.div<{ theme: any }>`
   //max-width: 70vw;
   //margin: 0 auto;
   height: 100vh;
-  background: linear-gradient(#181a21, #363a59);
+  //background: linear-gradient(#181a21, #363a59);
   // background: ${({ theme }) => theme.defaultOverlay};
 `;
 
@@ -60,6 +60,7 @@ const HomePage = () => {
 
   // const pageWidth = document.documentElement.scrollWidth;
   // const pageHeight = document.documentElement.scrollHeight;
+  // style={{ background: '#0e121b' }}
   return (
     <PageWrapper>
       <BannerWrapper>
@@ -68,7 +69,7 @@ const HomePage = () => {
           <div>Portfolio_ | FRONT-END DEVELOPER.</div>
         </div>
       </BannerWrapper>
-      <div style={{ background: '#0e121b' }}>
+      <div>
         <MarginCenterBox ref={cardRef}>
           <div>Projects__</div>
           <motion.div

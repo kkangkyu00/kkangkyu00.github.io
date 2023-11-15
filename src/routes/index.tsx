@@ -1,7 +1,9 @@
 import React from 'react';
 import { Location, Route, Routes } from 'react-router-dom';
-import { HomePage, AboutPage } from 'pages';
 import RotatedGrid from 'components/MouseInteraction/RotatedGrid';
+
+const HomePage = React.lazy(() => import('pages/HomePage'));
+const AboutPage = React.lazy(() => import('pages/AboutPage'));
 
 interface AppRouteProps {
   location: Location;
