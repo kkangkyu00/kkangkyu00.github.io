@@ -1,6 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
-const RotatedGrid = () => {
+interface RotatedGridProps {
+  numRow?: number;
+  numCol?: number;
+}
+
+const RotatedGrid = ({ numRow, numCol }: RotatedGridProps) => {
   const canvasRef = useRef(null);
 
   const normalize = (number: number, scaleMin: number, scaleMax: number, newScaleMin = 0, newScaleMax = 1) => {
@@ -19,8 +24,8 @@ const RotatedGrid = () => {
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    const numRows = 8;
-    const numCols = 16;
+    const numRows = numRow || 8;
+    const numCols = numCol || 16;
     const movePos = { x: (e.pageX - canvas.offsetLeft) * 2, y: (e.pageY - canvas.offsetTop) * 2 };
 
     for (let row = 0; row < numRows; row += 1) {
