@@ -10,27 +10,28 @@ const ButtonWrapper = styled.div`
   margin: 0 16px;
 `;
 
+const properties: any = {
+  dark: {
+    r: 9,
+    transform: 'rotate(40deg)',
+    cx: 12,
+    cy: 4,
+    opacity: 0,
+    fill: 'white'
+  },
+  light: {
+    r: 5,
+    transform: 'rotate(90deg)',
+    cx: 30,
+    cy: 0,
+    opacity: 1,
+    fill: 'black'
+  },
+  springConfig: { mass: 4, tension: 250, friction: 35 }
+};
+
 const DarkModeButton = () => {
   const { theme, onChangeTheme } = useContext(ThemeContext);
-  const properties: any = {
-    dark: {
-      r: 9,
-      transform: 'rotate(40deg)',
-      cx: 12,
-      cy: 4,
-      opacity: 0,
-      fill: 'white'
-    },
-    light: {
-      r: 5,
-      transform: 'rotate(90deg)',
-      cx: 30,
-      cy: 0,
-      opacity: 1,
-      fill: 'black'
-    },
-    springConfig: { mass: 4, tension: 250, friction: 35 }
-  };
   const { r, transform, cx, cy, opacity, fill } = properties[theme];
 
   const svgContainerProps = useSpring({
