@@ -1,12 +1,9 @@
 import React from 'react';
-// import { Row, Col } from 'antd';
-// import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { useTheme } from 'hooks';
 
 const PageWrapper = styled.div`
   height: 400px;
-  //color: #fff;
   .title {
     font-size: 5vw;
     text-transform: uppercase;
