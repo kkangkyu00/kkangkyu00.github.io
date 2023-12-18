@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useContext, useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import styled from 'styled-components';
 
 import { ThemeContext } from 'contexts/ThemeContext';
@@ -10,45 +10,32 @@ const ButtonWrapper = styled.div`
   margin: 0 16px;
 `;
 
-const properties: any = {
-  dark: {
-    r: 9,
-    transform: 'rotate(40deg)',
-    cx: 12,
-    cy: 4,
-    opacity: 0,
-    fill: 'white'
-  },
-  light: {
-    r: 5,
-    transform: 'rotate(90deg)',
-    cx: 30,
-    cy: 0,
-    opacity: 1,
-    fill: 'black'
-  },
-  springConfig: { mass: 4, tension: 250, friction: 35 }
-};
-
 const DarkModeButton = () => {
+  const controls = useAnimation();
   const { theme, onChangeTheme } = useContext(ThemeContext);
-  const { r, transform, cx, cy, opacity, fill } = properties[theme];
 
-  const svgContainerProps = useSpring({
-    transform,
-    config: properties.springConfig
-  });
-  const centerCircleProps: any = useSpring({ r, config: properties.springConfig });
-  const maskedCircleProps: any = useSpring({
-    cx,
-    cy,
-    config: properties.springConfig
-  });
-  const linesProps = useSpring({ opacity, config: properties.springConfig });
+  useEffect(() => {
+    controls.start(theme).then();
+  }, [controls, theme]);
+
+  const maskedCircleVariants = {
+    light: { cx: 19, cy: 4 },
+    dark: { cx: 30, cy: 0 }
+  };
+
+  const centerCircleVariants: Record<string, object> = {
+    light: { r: 9, fill: 'black' },
+    dark: { r: 5, fill: 'white' }
+  };
+
+  const linesVariants = {
+    light: { scale: 0.6, rotate: 40, opacity: 0 },
+    dark: { scale: 1, rotate: 90, opacity: 1, transition: { type: 'spring' } }
+  };
 
   return (
     <ButtonWrapper>
-      <animated.svg
+      <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -59,18 +46,14 @@ const DarkModeButton = () => {
         strokeLinejoin="round"
         stroke="currentColor"
         onClick={onChangeTheme}
-        style={{
-          cursor: 'pointer',
-          ...svgContainerProps
-        }}
+        style={{ cursor: 'pointer' }}
       >
-        <mask id="myMask2">
+        <mask id="mask">
           <rect x="0" y="0" width="100%" height="100%" fill="white" />
-          <animated.circle style={maskedCircleProps} r="9" fill="black" />
+          <motion.circle r="9" fill="black" animate={controls} variants={maskedCircleVariants} />
         </mask>
-
-        <animated.circle cx="12" cy="12" style={centerCircleProps} fill={fill} mask="url(#myMask2)" />
-        <animated.g stroke="currentColor" style={linesProps}>
+        <motion.circle cx="12" cy="12" animate={controls} variants={centerCircleVariants} mask="url(#mask)" />
+        <motion.g stroke="currentColor" animate={controls} variants={linesVariants}>
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
@@ -79,8 +62,8 @@ const DarkModeButton = () => {
           <line x1="21" y1="12" x2="23" y2="12" />
           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-        </animated.g>
-      </animated.svg>
+        </motion.g>
+      </motion.svg>
     </ButtonWrapper>
   );
 };

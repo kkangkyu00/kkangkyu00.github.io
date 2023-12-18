@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useTheme } from 'hooks';
 
 const PageWrapper = styled.div`
-  height: 400px;
   .title {
     font-size: 5vw;
     text-transform: uppercase;
