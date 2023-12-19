@@ -3,11 +3,9 @@ import styled from 'styled-components';
 import { useTheme } from 'hooks';
 
 const PageWrapper = styled.div`
-  .title {
-    font-size: 5vw;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-  }
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden;
 `;
 
 const BannerWrapper = styled.div`
@@ -112,8 +110,6 @@ const IntroWrapper = styled.div`
 `;
 
 const HomePage = () => {
-  // const pageWidth = document.documentElement.scrollWidth;
-  // const pageHeight = document.documentElement.scrollHeight;
   const { theme } = useTheme();
   console.log(theme, '#########');
   return (

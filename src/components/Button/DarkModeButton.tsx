@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { ThemeContext } from 'contexts/ThemeContext';
@@ -10,29 +10,23 @@ const ButtonWrapper = styled.div`
   margin: 0 16px;
 `;
 
+const maskedCircleVariants: Record<string, object> = {
+  light: { cx: 19, cy: 4 },
+  dark: { cx: 30, cy: 0 }
+};
+
+const centerCircleVariants: Record<string, object> = {
+  light: { r: 9, fill: 'black' },
+  dark: { r: 5, fill: 'white' }
+};
+
+const linesVariants: Record<string, object> = {
+  light: { scale: 0.6, rotate: 40, opacity: 0 },
+  dark: { scale: 1, rotate: 90, opacity: 1, transition: { type: 'spring' } }
+};
+
 const DarkModeButton = () => {
-  const controls = useAnimation();
   const { theme, onChangeTheme } = useContext(ThemeContext);
-
-  useEffect(() => {
-    controls.start(theme).then();
-  }, [controls, theme]);
-
-  const maskedCircleVariants = {
-    light: { cx: 19, cy: 4 },
-    dark: { cx: 30, cy: 0 }
-  };
-
-  const centerCircleVariants: Record<string, object> = {
-    light: { r: 9, fill: 'black' },
-    dark: { r: 5, fill: 'white' }
-  };
-
-  const linesVariants = {
-    light: { scale: 0.6, rotate: 40, opacity: 0 },
-    dark: { scale: 1, rotate: 90, opacity: 1, transition: { type: 'spring' } }
-  };
-
   return (
     <ButtonWrapper>
       <motion.svg
@@ -46,14 +40,15 @@ const DarkModeButton = () => {
         strokeLinejoin="round"
         stroke="currentColor"
         onClick={onChangeTheme}
+        animate={theme}
         style={{ cursor: 'pointer' }}
       >
         <mask id="mask">
           <rect x="0" y="0" width="100%" height="100%" fill="white" />
-          <motion.circle r="9" fill="black" animate={controls} variants={maskedCircleVariants} />
+          <motion.circle r="9" fill="black" variants={maskedCircleVariants} />
         </mask>
-        <motion.circle cx="12" cy="12" animate={controls} variants={centerCircleVariants} mask="url(#mask)" />
-        <motion.g stroke="currentColor" animate={controls} variants={linesVariants}>
+        <motion.circle cx="12" cy="12" variants={centerCircleVariants} mask="url(#mask)" />
+        <motion.g stroke="currentColor" variants={linesVariants}>
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />
           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
