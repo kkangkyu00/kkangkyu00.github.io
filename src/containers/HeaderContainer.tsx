@@ -25,6 +25,8 @@ const HeaderWrapper = styled.div`
   top: 0;
   z-index: 10;
   ${({ theme }) => theme.typography.title18R};
+  backdrop-filter: blur(0.5rem);
+  animation: fadein 0.5s ease 0s 0.5 normal;
   & > div {
     width: 100%;
     max-width: 1100px;
@@ -47,6 +49,7 @@ const MenuWrapper = styled.div`
   }
 `;
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const StyledMenu = styled(Menu)`
   border: none;
   padding: 0 16px;
@@ -73,15 +76,16 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const items: MenuProps['items'] = [
-  { label: 'Home', key: '/' },
-  { label: 'About', key: '/about' },
-  { label: 'Projects', key: '/projects' }
-];
+// const items: MenuProps['items'] = [
+//   { label: 'Home', key: '/' },
+//   { label: 'About', key: '/about' },
+//   { label: 'Projects', key: '/projects' }
+// ];
 
 const HeaderContainer = () => {
   const navigate = useNavigate();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onClick: MenuProps['onClick'] = ({ key }) => {
     navigate(key);
   };
@@ -90,7 +94,6 @@ const HeaderContainer = () => {
       <div>
         <Logo />
         <MenuWrapper>
-          <StyledMenu onClick={onClick} mode="horizontal" items={items} />
           <DarkModeButton />
           <BsGithub className="gitIcon" />
         </MenuWrapper>

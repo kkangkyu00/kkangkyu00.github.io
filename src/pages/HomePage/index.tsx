@@ -21,7 +21,7 @@ const BannerWrapper = styled.div`
   & > div {
     z-index: 2;
     font-size: 8em;
-    font-weight: 700;
+    font-weight: 800;
     width: 65%;
   }
   .ss {
@@ -33,7 +33,7 @@ const BannerWrapper = styled.div`
     top: 0;
     right: 0;
     z-index: 1;
-    width: 74%;
+    width: 80%;
     height: 88%;
     background: ${({ theme }) => theme.defaultOverlay};
   }
