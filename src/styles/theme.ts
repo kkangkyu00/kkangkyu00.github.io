@@ -35,12 +35,12 @@ export const typography = {
     line-height: 36px;
     font-weight: normal;
   `,
-  title20B: css`
+  body20B: css`
     font-size: 20px;
     line-height: 32px;
     font-weight: bold;
   `,
-  title20R: css`
+  body20R: css`
     font-size: 20px;
     line-height: 32px;
     font-weight: normal;

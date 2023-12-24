@@ -18,16 +18,19 @@ const BannerWrapper = styled.div`
     const theme = localStorage.getItem('theme');
     return theme === 'light' ? '#B0E0E6' : '#131414';
   }};
+
   & > div {
     z-index: 2;
     font-size: 8em;
     font-weight: 800;
     width: 65%;
   }
+
   .ss {
     font-size: 18px;
     padding-left: 10px;
   }
+
   .ground {
     position: absolute;
     top: 0;
@@ -43,7 +46,7 @@ const IntroWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 100;
   width: 100%;
   height: 100%;
   background: ${() => {
@@ -73,11 +76,13 @@ const IntroWrapper = styled.div`
     }};
     stroke-width: 34px;
   }
+
   .stroke-line {
     stroke-dasharray: 127px;
     stroke-dashoffset: 127px;
     animation: H-move 20s ease forwards;
   }
+
   .stroke-circle {
     stroke-dasharray: 360px;
     stroke-dashoffset: 360px;

@@ -25,7 +25,7 @@ const HeaderWrapper = styled.div`
   top: 0;
   z-index: 10;
   ${({ theme }) => theme.typography.title18R};
-  backdrop-filter: blur(0.5rem);
+  /*backdrop-filter: blur(0.5rem);*/
   animation: fadein 0.5s ease 0s 0.5 normal;
   & > div {
     width: 100%;
