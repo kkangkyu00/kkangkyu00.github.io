@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import styled from 'styled-components';
 
 const MenuContainer = styled.div`
@@ -31,12 +31,30 @@ const MenuContainer = styled.div`
     flex-direction: column;
     padding-left: calc(16vw - 60px);
     margin-bottom: 100px;
+    list-style: none;
   }
   .menu-nav a {
     ${({ theme }) => theme.typography.title32B};
     font-weight: 900;
     color: inherit;
     text-decoration: none;
+    position: relative;
+    padding: 0 10px;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0px;
+      right: 0px;
+      height: 15px;
+      z-index: -1;
+      opacity: 0.5;
+      background: #ff5851;
+      transform: scaleX(0) translateY(-50%);
+      transform-origin: left center;
+      transition: transform 400ms cubic-bezier(1, 0, 0, 1) 0ms;
+    }
   }
   .nav-footer {
     position: absolute;
@@ -44,17 +62,44 @@ const MenuContainer = styled.div`
     left: calc(16vw - 60px);
     font-size: 12px;
   }
+
+  .nav-open .menu-nav li a {
+    display: inline-block;
+    transform: translateY(0%);
+  }
+
+  .menu-nav li {
+    background: #202124;
+    overflow: hidden;
+    a {
+      display: inline-block;
+      transform: translateY(100%);
+      transition: transform 800ms cubic-bezier(1, 0, 0, 1) 0ms;
+      //transition: all 0.3s ease;
+    }
+  }
+
+  .menu-nav .active a,
+  .menu-nav a:hover {
+    &:before {
+      transform: scaleX(1) translateY(-50%);
+      transform-origin: left center;
+      background: #ff5851;
+    }
+  }
 `;
-const StyledButton = styled.div`
+const StyledButton = styled.div<{ $open: boolean }>`
   position: fixed;
-  z-index: 190;
+  z-index: 90;
   top: 50%;
   left: 25px;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   height: 40px;
+  cursor: pointer;
   pointer-events: all;
+
   .menu {
     width: 40px;
   }
@@ -84,53 +129,99 @@ const StyledButton = styled.div`
 `;
 
 interface LNBButtonProps {
+  isOpen: boolean;
   onClick: () => void;
 }
 
-const LNBButton = ({ onClick }: LNBButtonProps) => {
+const topVariants = {
+  hover: { width: 20 },
+  closed: { rotate: 0, translateY: 0, translateX: 0 },
+  opened: { width: 20, rotate: 45, translateY: 3.5, translateX: -1.5 }
+};
+const centerVariants = {
+  hover: { width: 32 },
+  closed: { rotate: 0, translateY: 0, translateX: 0 },
+  opened: { width: 20, rotate: -45, translateY: -1.5, translateX: -1.5 }
+};
+const bottomVariants = {
+  hover: { width: 18 },
+  closed: { rotate: 0, display: 'block' },
+  opened: { display: 'none' }
+};
+
+const LNBButton = ({ isOpen, onClick }: LNBButtonProps) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    const variant = isOpen ? 'opened' : 'closed';
+    controls.start(variant).then();
+  }, [isOpen, controls]);
+
   return (
-    <AnimatePresence>
-      <StyledButton as={motion.div} whileHover="hover" onClick={onClick}>
-        <motion.div className="menu">
-          <motion.span className="line" variants={{ hover: { width: 20 } }} />
-          <motion.span className="line" variants={{ hover: { width: 32 } }} />
-          <motion.span className="line" variants={{ hover: { width: 18 } }} />
-        </motion.div>
-        <span className="menu-btn-txt">M E N U</span>
-      </StyledButton>
-    </AnimatePresence>
+    <StyledButton
+      $open={isOpen}
+      as={motion.div}
+      whileHover={!isOpen ? 'hover' : ''}
+      animate={controls}
+      onClick={onClick}
+    >
+      <motion.div className="menu">
+        <motion.span className="line" variants={topVariants} />
+        <motion.span className="line" variants={centerVariants} />
+        <motion.span className="line" variants={bottomVariants} />
+      </motion.div>
+      <motion.span className="menu-btn-txt">M E N U</motion.span>
+    </StyledButton>
   );
 };
+
+interface MenuItem {
+  label: string;
+  to: string;
+}
+
+const menuItems: MenuItem[] = [
+  { label: 'HOME', to: '/' },
+  { label: 'ABOUT', to: '/about' },
+  { label: 'SKILLS', to: '/skills' },
+  { label: 'PROJECTS', to: '/projects' },
+  { label: 'CONTACT', to: '/contact' }
+];
 
 const LNB = () => {
   const location = useLocation();
   const [isOpen, setOpen] = useState(false);
+  const [active, setActive] = useState('HOME');
 
   useEffect(() => {
     setOpen(false);
+    setActive(location.pathname);
   }, [location]);
 
   const handleClick = () => {
     setOpen(() => !isOpen);
   };
+
   return (
-    <AnimatePresence>
-      <LNBButton key="lnbButton" onClick={handleClick} />
+    <div>
+      <LNBButton key="lnbButton" isOpen={isOpen} onClick={handleClick} />
       <MenuContainer style={{ transform: isOpen ? 'translateX(0%)' : 'translateX(-100%)' }}>
-        <div className="nav-container">
+        <div className={`nav-container ${isOpen && 'nav-open'}`}>
           <div className="nav-title">kkangkyu00</div>
-          <div className="menu-nav">
-            <Link to="/">HOME</Link>
-            <Link to="/about">ABOUT</Link>
-            <Link to="/skills">SKILLS</Link>
-            <Link to="/projects">PROJECTS</Link>
-            <Link to="/contact">CONTACT</Link>
-          </div>
+          <ul className="menu-nav">
+            {menuItems.map((menu: MenuItem, index) => (
+              <li className={`nav-item ${menu.to === active && 'active'}`}>
+                <Link to={menu.to} style={{ transitionDelay: `0.${index}s` }}>
+                  {menu.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
           <div className="nav-footer">Copyright 2024. kkangkyu00. All rights reserved.</div>
           <div>qjxms</div>
         </div>
       </MenuContainer>
-    </AnimatePresence>
+    </div>
   );
 };
 

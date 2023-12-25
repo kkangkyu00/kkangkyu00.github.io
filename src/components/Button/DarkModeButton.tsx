@@ -8,6 +8,9 @@ const ButtonWrapper = styled.div`
   scale: 0.9;
   height: 24px;
   margin: 0 16px;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 const maskedCircleVariants: Record<string, object> = {
@@ -41,7 +44,6 @@ const DarkModeButton = () => {
         stroke="currentColor"
         onClick={onChangeTheme}
         animate={theme}
-        style={{ cursor: 'pointer' }}
       >
         <mask id="mask">
           <rect x="0" y="0" width="100%" height="100%" fill="white" />
