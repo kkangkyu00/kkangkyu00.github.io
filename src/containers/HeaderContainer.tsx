@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, MenuProps } from 'antd';
 import styled from 'styled-components';
-import { BsGithub } from 'react-icons/bs';
+// import { BsGithub } from 'react-icons/bs';
 
 import { DarkModeButton } from 'components';
 
@@ -25,8 +25,8 @@ const HeaderWrapper = styled.div`
   top: 0;
   z-index: 10;
   ${({ theme }) => theme.typography.title18R};
-  /*backdrop-filter: blur(0.5rem);*/
-  animation: fadein 0.5s ease 0s 0.5 normal;
+  background: ${({ theme }) => theme.defaultOverlay};
+
   & > div {
     width: 100%;
     max-width: 1100px;
@@ -95,7 +95,6 @@ const HeaderContainer = () => {
         <Logo />
         <MenuWrapper>
           <DarkModeButton />
-          <BsGithub className="gitIcon" />
         </MenuWrapper>
       </div>
     </HeaderWrapper>

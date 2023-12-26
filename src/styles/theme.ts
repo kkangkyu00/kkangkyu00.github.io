@@ -70,7 +70,7 @@ export const typography = {
 export const lightTheme = {
   color,
   typography,
-  defaultOverlay: '#EFF1F5',
+  defaultOverlay: '#F0F8FF',
   defaultColor: '#202124'
 };
 
@@ -78,7 +78,7 @@ export const darkTheme = {
   color,
   typography,
   defaultOverlay: '#202124',
-  defaultColor: '#EFF1F5'
+  defaultColor: '#F0F8FF'
 };
 
 export default { color, typography, lightTheme, darkTheme };

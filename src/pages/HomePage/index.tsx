@@ -36,8 +36,24 @@ const BannerWrapper = styled.div`
     top: 0;
     right: 0;
     z-index: 1;
-    width: 80%;
-    height: 88%;
+    width: 70%;
+    height: 100%;
+    background: #eff1f5;
+  }
+  .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55px;
+    height: 100%;
+    background: ${({ theme }) => theme.defaultOverlay};
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
     background: ${({ theme }) => theme.defaultOverlay};
   }
 `;
@@ -155,6 +171,8 @@ const HomePage = () => {
           </div>
         </div>
         <div className="ground" />
+        <div className="right" />
+        <div className="footer" />
       </BannerWrapper>
     </PageWrapper>
   );

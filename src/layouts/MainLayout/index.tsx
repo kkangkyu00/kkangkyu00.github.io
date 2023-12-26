@@ -3,11 +3,18 @@ import { HeaderContainer } from 'containers';
 
 const LNB = React.lazy(() => import('containers/LNB'));
 
-const MainLayout = ({ children }: any) => {
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+const MainLayout = ({ children }: MainLayoutProps) => {
+  const handleClick = (value: boolean) => {
+    console.log(value, '######### value');
+  };
   return (
     <div>
       <HeaderContainer />
-      <LNB />
+      <LNB onClick={handleClick} />
       {children}
     </div>
   );
