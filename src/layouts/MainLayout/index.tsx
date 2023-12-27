@@ -1,7 +1,5 @@
 import React from 'react';
-import { HeaderContainer } from 'containers';
-
-const LNB = React.lazy(() => import('containers/LNB'));
+import { HeaderContainer, NavContainer } from 'containers';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -14,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div>
       <HeaderContainer />
-      <LNB onClick={handleClick} />
+      <NavContainer onClick={handleClick} />
       {children}
     </div>
   );

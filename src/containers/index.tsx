@@ -1,2 +1,2 @@
 export { default as HeaderContainer } from './HeaderContainer';
-export { default as LNB } from './LNB';
+export { default as NavContainer } from './NavContainer';

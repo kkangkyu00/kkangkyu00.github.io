@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 
-import { NavContainer, StyledButton } from './style';
+import { NavWrapper, StyledButton } from './style';
 
 const topVariants = {
   hover: { width: 20 },
-  closed: { rotate: 0, translateY: 0, translateX: 0 },
+  closed: { width: 16, rotate: 0, translateY: 0, translateX: 0 },
   opened: { width: 20, rotate: 45, translateY: 3.5, translateX: -1.5 }
 };
 const centerVariants = {
   hover: { width: 32 },
-  closed: { rotate: 0, translateY: 0, translateX: 0 },
+  closed: { width: 20, rotate: 0, translateY: 0, translateX: 0 },
   opened: { width: 20, rotate: -45, translateY: -1.5, translateX: -1.5 }
 };
 const bottomVariants = {
   hover: { width: 18 },
-  closed: { rotate: 0, display: 'block' },
+  closed: { width: 12, rotate: 0, display: 'block' },
   opened: { display: 'none' }
 };
 
@@ -68,7 +68,7 @@ interface LNBProps {
   onClick: (open: boolean) => void;
 }
 
-const LNB = ({ onClick }: LNBProps) => {
+const NavContainer = ({ onClick }: LNBProps) => {
   const location = useLocation();
   const [isOpen, setOpen] = useState(false);
   const [active, setActive] = useState('HOME');
@@ -86,7 +86,7 @@ const LNB = ({ onClick }: LNBProps) => {
   return (
     <div>
       <NavButton isOpen={isOpen} onClick={handleClick} />
-      <NavContainer $open={isOpen}>
+      <NavWrapper $open={isOpen}>
         <div className={`nav-container ${isOpen && 'nav-open'}`}>
           <div className="nav-title">kkangkyu00</div>
           <ul className="nav-wrapper">
@@ -100,9 +100,9 @@ const LNB = ({ onClick }: LNBProps) => {
           </ul>
           <div className="nav-footer">Copyright 2024. kkangkyu00. All rights reserved.</div>
         </div>
-      </NavContainer>
+      </NavWrapper>
     </div>
   );
 };
 
-export default LNB;
+export default NavContainer;
