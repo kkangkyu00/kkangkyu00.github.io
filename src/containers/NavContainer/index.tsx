@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { classNames } from 'utils';
 
 import NavButton from './NavButton';
 import { NavWrapper } from './style';
@@ -35,11 +36,11 @@ const NavContainer = ({ onClick }: NavContainerProps) => {
     <div>
       <NavButton isOpen={isOpen} onClick={handleClick} />
       <NavWrapper $open={isOpen}>
-        <div className={`nav-container ${isOpen && 'nav-open'}`}>
+        <div className={classNames('nav-container', { 'nav-open': isOpen })}>
           <div className="nav-title">kkangkyu00</div>
           <ul className="nav-wrapper">
             {menuItems.map((menu, index) => (
-              <li className={`nav-item ${menu.to === active ? 'active' : ''}`}>
+              <li className={classNames('nav-item', { active: menu.to === active })}>
                 <Link to={menu.to} style={{ transitionDelay: `0.${index + 1}s` }}>
                   {menu.label}
                 </Link>

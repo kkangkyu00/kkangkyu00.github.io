@@ -9,10 +9,12 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const handleClick = (value: boolean) => {
     console.log(value, '######### value');
   };
+
   return (
     <div>
-      <HeaderContainer />
+      <HeaderContainer isMenuOpen />
       <NavContainer onClick={handleClick} />
+      <div />
       {children}
     </div>
   );

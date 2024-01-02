@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { DarkModeButton } from 'components';
 
 const HeaderWrapper = styled.div`
@@ -10,7 +9,7 @@ const HeaderWrapper = styled.div`
   z-index: 10;
   width: 100%;
   height: 55px;
-  ${({ theme }) => theme.typography.body18R};
+  ${({ theme }) => theme.typography.body16B};
   background: ${({ theme }) => theme.defaultOverlay};
 
   & > div {
@@ -25,13 +24,17 @@ const HeaderWrapper = styled.div`
   .logo {
     cursor: pointer;
     padding: 0 4px;
-    ${({ theme }) => theme.typography.body16B};
     color: ${({ theme }) => theme.defaultColor};
     text-decoration: none;
   }
 `;
 
-const HeaderContainer = () => {
+interface HeaderContainerProps {
+  isMenuOpen?: boolean;
+}
+
+const HeaderContainer = ({ isMenuOpen }: HeaderContainerProps) => {
+  console.log(isMenuOpen);
   return (
     <HeaderWrapper>
       <div>

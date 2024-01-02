@@ -1,15 +1,16 @@
 import React from 'react';
+import { classNames } from 'utils';
 import { StyledButton } from './style';
 
-interface LNBButtonProps {
+interface NavButtonProps {
   isOpen: boolean;
   onClick: () => void;
 }
 
-const NavButton = ({ isOpen, onClick }: LNBButtonProps) => {
+const NavButton = ({ isOpen, onClick }: NavButtonProps) => {
   return (
     <StyledButton $open={isOpen} onClick={onClick}>
-      <div className={`nav-toggle ${isOpen ? 'opened' : ''}`}>
+      <div className={classNames('nav-toggle', { opened: isOpen })}>
         <span className="line" />
         <span className="line" />
         <span className="line" />

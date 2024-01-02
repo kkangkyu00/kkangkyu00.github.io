@@ -16,6 +16,8 @@
       "routes/*": ["./routes/*"],
       "styles": ["./styles"],
       "styles/*": ["./styles/*"],
+      "utils": ["./utils"],
+      "utils/*": ["./utils/*"],
       "images": ["./assets/images"],
       "images/*": ["./assets/images/*"]
     }
