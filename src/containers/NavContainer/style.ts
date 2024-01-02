@@ -97,28 +97,63 @@ export const StyledButton = styled.div<{ $open: boolean }>`
 
   .nav-toggle {
     width: 40px;
-  }
-  .line {
-    display: block;
-    float: right;
-    clear: right;
-    height: 2px;
-    background: ${({ theme }) => theme.defaultColor};
-  }
-  .nav-toggle .line:nth-child(1) {
-    width: 16px;
-  }
-  .nav-toggle .line:nth-child(2) {
-    width: 20px;
-    margin-top: 3px;
-  }
-  .nav-toggle .line:nth-child(3) {
-    width: 12px;
-    margin-top: 3px;
+    .line {
+      display: block;
+      float: right;
+      clear: right;
+      height: 2px;
+      background: ${({ theme }) => theme.defaultColor};
+      transition: width 0.3s ease;
+    }
   }
   .nav-toggle-txt {
     top: 20px;
     font-size: 10px;
     transform: rotate(-90deg);
+  }
+
+  // initial
+  .nav-toggle {
+    .line:nth-child(1) {
+      width: 16px;
+    }
+    .line:nth-child(2) {
+      width: 20px;
+      margin-top: 3px;
+    }
+    .line:nth-child(3) {
+      width: 12px;
+      margin-top: 3px;
+    }
+  }
+  // opened
+  .nav-toggle.opened {
+    .line {
+      transition: transform 0.3s ease;
+    }
+    .line:nth-child(1) {
+      width: 20px;
+      transform: rotate(45deg) translate(2px, 0px);
+    }
+    .line:nth-child(2) {
+      width: 20px;
+      transform: rotate(-45deg) translate(3.5px, -1.5px);
+    }
+    .line:nth-child(3) {
+      width: 12px;
+      display: none;
+    }
+  }
+  // hover
+  &:hover .nav-toggle:not(.nav-toggle.opened) {
+    .line:nth-child(1) {
+      width: 20px !important;
+    }
+    .line:nth-child(2) {
+      width: 32px !important;
+    }
+    .line:nth-child(3) {
+      width: 18px !important;
+    }
   }
 `;

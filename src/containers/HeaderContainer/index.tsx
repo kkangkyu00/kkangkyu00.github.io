@@ -1,19 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { DarkModeButton } from 'components';
-
-const LogoWrapper = styled.div`
-  display: flex;
-  padding: 0 16px;
-  font-size: 24px;
-  & span {
-    padding: 0 4px;
-    line-height: 18px;
-  }
-`;
-
-const Logo = () => <LogoWrapper>kkangkyu00</LogoWrapper>;
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -30,20 +19,15 @@ const HeaderWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     max-width: 1100px;
-    height: 64px;
+    height: 100%;
     margin: auto;
   }
-`;
-
-const MenuWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  .gitIcon {
-    width: 20px;
-    height: 20px;
-    margin: auto 16px;
+  .logo {
+    cursor: pointer;
+    padding: 0 4px;
+    ${({ theme }) => theme.typography.body16B};
+    color: ${({ theme }) => theme.defaultColor};
+    text-decoration: none;
   }
 `;
 
@@ -51,10 +35,10 @@ const HeaderContainer = () => {
   return (
     <HeaderWrapper>
       <div>
-        <Logo />
-        <MenuWrapper>
-          <DarkModeButton />
-        </MenuWrapper>
+        <Link className="logo" to="/">
+          kkangkyu00
+        </Link>
+        <DarkModeButton />
       </div>
     </HeaderWrapper>
   );

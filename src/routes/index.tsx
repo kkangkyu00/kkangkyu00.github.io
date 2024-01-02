@@ -19,7 +19,9 @@ const AppRoutes = ({ location }: AppRouteProps) => {
           <Route path="/" element={<Outlet />}>
             <Route index element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/skills" element={<div />} />
             <Route path="/projects" element={<ProjectPage />} />
+            <Route path="/contect" element={<div />} />
           </Route>
         </Routes>
       </AnimatePresence>
