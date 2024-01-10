@@ -19,12 +19,6 @@ export const NavWrapper = styled.div<{ $open: boolean }>`
     width: 100%;
     height: 100%;
   }
-  .nav-title {
-    position: absolute;
-    top: 65px;
-    left: calc(16vw - 60px);
-    ${({ theme }) => theme.typography.body16B};
-  }
   .nav-wrapper {
     display: flex;
     flex-direction: column;
@@ -103,13 +97,14 @@ export const StyledButton = styled.div<{ $open: boolean }>`
       clear: right;
       height: 2px;
       background: ${({ theme }) => theme.defaultColor};
-      transition: width 0.3s ease;
+      transition: all 0.3s ease;
     }
   }
   .nav-toggle-txt {
     top: 20px;
     font-size: 10px;
     transform: rotate(-90deg);
+    visibility: ${({ $open }) => $open && 'hidden'};
   }
 
   // initial
@@ -129,7 +124,7 @@ export const StyledButton = styled.div<{ $open: boolean }>`
   // opened
   .nav-toggle.opened {
     .line {
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
     }
     .line:nth-child(1) {
       width: 20px;

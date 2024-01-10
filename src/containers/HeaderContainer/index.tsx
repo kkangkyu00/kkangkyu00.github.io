@@ -3,21 +3,22 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { DarkModeButton } from 'components';
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = styled.div<{ $active?: boolean }>`
   position: fixed;
-  top: 0;
-  z-index: 10;
+  top: ${({ $active }) => ($active ? 50 : 0)}px;
+  left: 0;
+  z-index: 90;
   width: 100%;
   height: 55px;
   ${({ theme }) => theme.typography.body16B};
-  background: ${({ theme }) => theme.defaultOverlay};
+  transition: top 0.6s ease;
 
   & > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1100px;
+    max-width: 62.5%;
     height: 100%;
     margin: auto;
   }
@@ -30,14 +31,14 @@ const HeaderWrapper = styled.div`
 `;
 
 interface HeaderContainerProps {
-  isMenuOpen?: boolean;
+  isActive?: boolean;
 }
 
-const HeaderContainer = ({ isMenuOpen }: HeaderContainerProps) => {
-  console.log(isMenuOpen);
+const HeaderContainer = ({ isActive }: HeaderContainerProps) => {
+  console.log(isActive);
   return (
-    <HeaderWrapper>
-      <div>
+    <HeaderWrapper $active={isActive}>
+      <div className="header">
         <Link className="logo" to="/">
           kkangkyu00
         </Link>

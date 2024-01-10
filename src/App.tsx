@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import AppRoutes from 'routes';
 
+import MainLayout from './layouts/MainLayout';
 import './App.less';
 
 const App = () => {
@@ -9,7 +10,9 @@ const App = () => {
   return (
     <div className="App">
       <React.Suspense fallback="">
-        <AppRoutes location={location} />
+        <MainLayout>
+          <AppRoutes location={location} />
+        </MainLayout>
       </React.Suspense>
     </div>
   );

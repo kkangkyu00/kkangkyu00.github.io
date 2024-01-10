@@ -1,7 +1,6 @@
 import React from 'react';
 import { Location, Route, Routes, Outlet } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import MainLayout from '../layouts/MainLayout';
 
 const HomePage = React.lazy(() => import('pages/HomePage'));
 const AboutPage = React.lazy(() => import('pages/AboutPage'));
@@ -13,19 +12,17 @@ interface AppRouteProps {
 
 const AppRoutes = ({ location }: AppRouteProps) => {
   return (
-    <MainLayout>
-      <AnimatePresence mode="wait" initial={false}>
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Outlet />}>
-            <Route index element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/skills" element={<div />} />
-            <Route path="/projects" element={<ProjectPage />} />
-            <Route path="/contect" element={<div />} />
-          </Route>
-        </Routes>
-      </AnimatePresence>
-    </MainLayout>
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Outlet />}>
+          <Route index element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/skills" element={<div />} />
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/contect" element={<div />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   );
 };
 

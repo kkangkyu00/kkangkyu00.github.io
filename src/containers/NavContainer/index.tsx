@@ -37,7 +37,6 @@ const NavContainer = ({ onClick }: NavContainerProps) => {
       <NavButton isOpen={isOpen} onClick={handleClick} />
       <NavWrapper $open={isOpen}>
         <div className={classNames('nav-container', { 'nav-open': isOpen })}>
-          <div className="nav-title">kkangkyu00</div>
           <ul className="nav-wrapper">
             {menuItems.map((menu, index) => (
               <li className={classNames('nav-item', { active: menu.to === active })}>
