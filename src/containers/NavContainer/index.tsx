@@ -8,7 +8,6 @@ import { NavWrapper } from './style';
 const menuItems: Record<string, string>[] = [
   { label: 'HOME', to: '/' },
   { label: 'ABOUT', to: '/about' },
-  { label: 'SKILLS', to: '/skills' },
   { label: 'PROJECTS', to: '/projects' },
   { label: 'CONTACT', to: '/contact' }
 ];
@@ -33,23 +32,21 @@ const NavContainer = ({ onClick }: NavContainerProps) => {
   };
 
   return (
-    <div>
+    <NavWrapper $open={isOpen}>
       <NavButton isOpen={isOpen} onClick={handleClick} />
-      <NavWrapper $open={isOpen}>
-        <div className={classNames('nav-container', { 'nav-open': isOpen })}>
-          <ul className="nav-wrapper">
-            {menuItems.map((menu, index) => (
-              <li className={classNames('nav-item', { active: menu.to === active })}>
-                <Link to={menu.to} style={{ transitionDelay: `0.${index + 1}s` }}>
-                  {menu.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="nav-footer">Copyright 2024. kkangkyu00. All rights reserved.</div>
-        </div>
-      </NavWrapper>
-    </div>
+      <div className={classNames('nav-container', { 'nav-open': isOpen })}>
+        <ul className="nav-wrapper">
+          {menuItems.map((menu, index) => (
+            <li className={classNames('nav-item', { active: menu.to === active })}>
+              <Link to={menu.to} style={{ transitionDelay: `0.${index + 1}s` }}>
+                {menu.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="nav-footer">Copyright 2024. kkangkyu00. All rights reserved.</div>
+      </div>
+    </NavWrapper>
   );
 };
 

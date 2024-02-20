@@ -1,29 +1,33 @@
 import styled from 'styled-components';
 
 export const NavWrapper = styled.div<{ $open: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 55px;
-  z-index: 80;
-  width: 70%;
-  height: 100%;
-  padding-left: 50px;
-  background: ${({ theme }) => theme.defaultOverlay};
-  transition: transform 400ms cubic-bezier(1, 0, 0, 1) 0ms;
-  transform: translateX(${({ $open }) => ($open ? '0%' : '-100%')});
-
+  position: relative;
   .nav-container {
-    position: relative;
-    display: inline-flex;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    z-index: 80;
+    display: flex;
     align-items: center;
-    width: 100%;
+    width: 70%;
     height: 100%;
+    background: ${({ theme }) => theme.defaultOverlay};
+    transition: transform 400ms cubic-bezier(1, 0, 0, 1) 0ms;
+    transform: translateX(${({ $open }) => ($open ? '0%' : '-100%')});
+  }
+  .nav-container:after {
+    content: '';
+    position: absolute;
+    right: -55px;
+    width: 55px;
+    height: 100%;
+    background: ${({ theme }) => theme.defaultOverlay};
   }
   .nav-wrapper {
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
-    padding-left: calc(16vw - 60px);
+    padding-left: 16vw;
     list-style: none;
   }
   .nav-wrapper li {
@@ -70,9 +74,21 @@ export const NavWrapper = styled.div<{ $open: boolean }>`
   }
   .nav-footer {
     position: absolute;
-    bottom: 120px;
-    left: calc(16vw - 60px);
+    bottom: 130px;
+    left: 16vw;
     font-size: 12px;
+  }
+  .nav-dim {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    opacity: ${({ $open }) => ($open ? 0.5 : 0)};
+    display: ${({ $open }) => ($open ? 'block' : 'none')};
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    //transition: opacity 2s;
   }
 `;
 

@@ -70,7 +70,8 @@ export const typography = {
 export const lightTheme = {
   color,
   typography,
-  defaultOverlay: '#F0F8FF',
+  // defaultOverlay: '#F0F8FF',
+  defaultOverlay: '#FFFFFF',
   defaultColor: '#202124'
 };
 

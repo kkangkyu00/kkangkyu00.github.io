@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { Row, Col } from 'antd';
 import styled from 'styled-components';
@@ -6,6 +7,7 @@ import * as si from 'react-icons/si';
 import { ProjectCard } from 'components';
 
 const Wrapper = styled.div`
+  height: 100%;
   .banner {
     width: 100vw;
     max-width: 60vw;
@@ -21,18 +23,49 @@ const Wrapper = styled.div`
       ${({ theme }) => theme.typography.body18B};
     }
   }
+
+  ///
+  .about {
+    display: flex;
+    height: 100%;
+  }
+  .about-content {
+    background: #424a6c;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 70%;
+    color: #fff;
+    & > div {
+      width: 50%;
+    }
+  }
+  .about-ground {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    ${({ theme }) => theme.typography.title32B};
+  }
+
+  /////
+  .about-title {
+    display: inline-flex;
+    align-items: flex-end;
+    flex-direction: column;
+    font-size: 48px;
+    font-weight: 700;
+    .description {
+      font-size: 14px;
+      line-height: 6px;
+    }
+  }
 `;
 
 const AboutWrapper = styled.div`
   ${({ theme }) => theme.typography.body18R};
-`;
-
-const Section = styled.div`
-  width: 100vw;
-  max-width: 60vw;
-  margin: 0 auto;
-  padding-top: 20px;
-  padding-bottom: 16px;
 `;
 
 const skills = [
@@ -52,34 +85,31 @@ const skills = [
 ];
 
 const AboutPage = () => {
-  console.log('############## AboutPage');
-  // Passionate about UI/UX. Over 4 years of development experience in HTML, CSS, JS, React and NextJS frameworks.
   return (
     <Wrapper>
-      <div className="pentagon" />
-      <div className="banner">
-        <div className="banner-content">
-          <div className="sub-content">결과물로 말하는 프론트엔드 개발자</div>
-          <div>강규석에 대해 알아보자!</div>
+      <div className="about">
+        <div className="about-ground">About</div>
+        <div className="about-content">
+          <div>
+            <div className="about-title">
+              <div className="description">who am i</div>
+              <div>Hello.</div>
+            </div>
+            <div>항상 좋은 UX/UI에 대해 고민하고 재사용성을 고려해서 개발하고 있습니다.</div>
+            <div>새로운 기술을 습득하고 문제의식과 해결을 통해 성장하고 있습니다.</div>
+          </div>
         </div>
       </div>
-      <Section>
-        <AboutWrapper>
-          <div>항상 좋은 UX/UI에 대해 고민하고 재사용성을 고려해서 개발하고 있습니다.</div>
-          <div>새로운 기술을 습득하고 문제의식과 해결을 통해 성장하고 있습니다.</div>
-        </AboutWrapper>
-      </Section>
-      <Section>
-        <div>Skills__</div>
-        <div>프로젝트를 진행하면서 사용해본 경험이 있는 기술스택입니다.</div>
-        <Row gutter={[8, 16]}>
-          {skills.map(({ title, icon, description }) => (
-            <Col span={6}>
-              <ProjectCard title={title} image={icon} description={description} direction="row" />
-            </Col>
-          ))}
-        </Row>
-      </Section>
+      {/* skills */}
+      <div>SKILL</div>
+      <Row>
+        <Col>
+          <div>Basics</div>
+        </Col>
+        <div>Frameworks</div>
+        <div>Libraries</div>
+        <div>Tools</div>
+      </Row>
     </Wrapper>
   );
 };

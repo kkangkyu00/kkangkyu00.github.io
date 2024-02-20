@@ -6,11 +6,6 @@ import { HeaderContainer, NavContainer } from 'containers';
 import { useLocation } from 'react-router-dom';
 
 const LayoutWrapper = styled.div`
-  .content {
-    width: calc(100% - 110px);
-    height: calc(100% - 110px);
-    padding: 55px;
-  }
   .borders > * {
     position: fixed;
     z-index: 40;
@@ -42,6 +37,21 @@ const LayoutWrapper = styled.div`
   }
 `;
 
+const ContentLayout = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .content {
+    position: absolute;
+    inset: 55px;
+    width: calc(100% - 110px);
+    height: calc(100% - 110px);
+    background: #f8f8f8;
+    overflow-y: scroll;
+  }
+`;
+
 interface MainLayoutProps {
   children: React.ReactNode;
 }
@@ -62,7 +72,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
     <LayoutWrapper className="main">
       <HeaderContainer isActive={isActive} />
       <NavContainer onClick={handleClick} />
-      <div className="content">{children}</div>
+      <ContentLayout>
+        <div className="content">{children}</div>
+      </ContentLayout>
       <div className={classNames('borders', { active: isActive })}>
         <div className="top" />
         <div className="right" />

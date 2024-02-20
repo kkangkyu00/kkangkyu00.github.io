@@ -18,13 +18,12 @@ const HeaderWrapper = styled.div<{ $active?: boolean }>`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 62.5%;
+    max-width: 68%;
     height: 100%;
     margin: auto;
   }
   .logo {
     cursor: pointer;
-    padding: 0 4px;
     color: ${({ theme }) => theme.defaultColor};
     text-decoration: none;
   }
@@ -35,7 +34,6 @@ interface HeaderContainerProps {
 }
 
 const HeaderContainer = ({ isActive }: HeaderContainerProps) => {
-  console.log(isActive);
   return (
     <HeaderWrapper $active={isActive}>
       <div className="header">

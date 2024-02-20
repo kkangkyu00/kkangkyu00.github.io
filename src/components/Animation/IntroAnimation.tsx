@@ -13,7 +13,7 @@ const IntroWrapper = styled.div`
   height: 100%;
   background: ${() => {
     const theme = localStorage.getItem('theme');
-    return theme === 'light' ? 'aliceblue' : '#202124';
+    return theme === 'light' ? '#ffffff' : '#202124';
   }};
   animation: intro-delay 1s forwards;
   animation-delay: 2s;

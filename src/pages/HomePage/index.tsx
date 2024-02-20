@@ -49,7 +49,6 @@ const HomePage = () => {
     <Wrapper>
       <IntroAnimation />
       <PageWrapper>
-        asdasdasdasd
         {/* <div> */}
         {/*  <div>FRONT</div> */}
         {/*  <div>END</div> */}
@@ -58,7 +57,6 @@ const HomePage = () => {
         {/*    <span className="ss">_Portfolio</span> */}
         {/*  </div> */}
         {/* </div> */}
-        <div className="ground" />
       </PageWrapper>
     </Wrapper>
   );

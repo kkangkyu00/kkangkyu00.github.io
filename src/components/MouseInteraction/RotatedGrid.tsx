@@ -19,26 +19,29 @@ const RotatedGrid = ({ numRow, numCol }: RotatedGridProps) => {
     if (!canvasRef || !canvasRef.current) return;
     const canvas: HTMLCanvasElement = canvasRef.current!;
     const context = canvas.getContext('2d') as CanvasRenderingContext2D;
-    canvas.style.width = '408px';
-    canvas.style.height = '216px';
+    canvas.style.width = '400px';
+    canvas.style.height = '200px';
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     const numRows = numRow || 8;
     const numCols = numCol || 16;
-    const movePos = { x: (e.pageX - canvas.offsetLeft) * 2, y: (e.pageY - canvas.offsetTop) * 2 };
+    const movePos = {
+      x: (e.pageX - canvas.offsetLeft - 50) * 2,
+      y: (e.pageY - canvas.offsetTop - 50) * 2
+    };
 
     for (let row = 0; row < numRows; row += 1) {
       for (let col = 0; col < numCols; col += 1) {
-        const x = normalize(col, 0, numCols, 0, canvas.width) + 25;
-        const y = normalize(row, 0, numRows, 0, canvas.height) + 25;
+        const x = normalize(col, 0, numCols, 0, canvas.width) + 10;
+        const y = normalize(row, 0, numRows, 0, canvas.height) + 10;
 
         // 두 점 사이의 거리 공식
         const dx = Math.abs(x + col - movePos.x);
         const dy = Math.abs(y + row - movePos.y);
         const distance = Math.sqrt(dx ** 2 + dy ** 2);
 
-        let radius = normalize(distance, 0, 100, 50, 40);
+        let radius = normalize(distance, 0, 200, 30, 10);
         radius = clamp(radius, 0, canvas.width);
 
         const midPoint = { x, y: y + radius * 0.5 };
@@ -74,7 +77,7 @@ const RotatedGrid = ({ numRow, numCol }: RotatedGridProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <canvas ref={canvasRef} width="816" height="432" />;
+  return <canvas ref={canvasRef} width="800" height="400" />;
 };
 
 export default RotatedGrid;
